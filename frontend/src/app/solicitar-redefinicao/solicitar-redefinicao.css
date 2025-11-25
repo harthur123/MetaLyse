@@ -1,10 +1,10 @@
-/* ARQUIVO: src/app/login/login.css */
+
 
 .auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Centraliza na tela, garantindo que não colida com o header */
+
   height: calc(100vh - 64px - 48px); 
   background-color: #fafafa;
 }

@@ -7,7 +7,6 @@
     <mat-card-content>
       <form class="auth-form" (ngSubmit)="definirSenha()">
 
-        <!-- CAMPO NOVA SENHA -->
         <mat-form-field appearance="outline">
           <mat-label>Nova Senha</mat-label>
           <input 
@@ -29,7 +28,7 @@
           </div>
         }
 
-        <!-- BARRA DE FORÇA -->
+
         <div style="margin-bottom: 15px;">
           <div style="width: 100%; height: 8px; background: #ddd; border-radius: 4px;">
             <div 
@@ -40,7 +39,6 @@
           </div>
         </div>
 
-        <!-- CONFIRMAR SENHA -->
         <mat-form-field appearance="outline">
           <mat-label>Confirmar Senha</mat-label>
           <input 
@@ -51,7 +49,7 @@
             required>
         </mat-form-field>
 
-        <!-- MENSAGENS -->
+
         <div *ngIf="errorMsg" style="color:red; margin-bottom:10px;">{{ errorMsg }}</div>
         <div *ngIf="successMsg" style="color:green; margin-bottom:10px;">{{ successMsg }}</div>
 

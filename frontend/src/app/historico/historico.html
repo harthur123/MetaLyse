@@ -1,7 +1,5 @@
 <div class="body-container">
-
   <mat-card class="history-card">
-    
     <mat-card-header>
       <mat-card-title>
         <mat-icon>assessment</mat-icon>
@@ -10,15 +8,12 @@
     </mat-card-header>
 
     <mat-card-content>
-      
       <div class="filter-toolbar">
-        
         <mat-form-field class="search-bar" appearance="outline">
           <mat-icon matPrefix>search</mat-icon>
           <mat-label>Buscar por nome do arquivo...</mat-label>
           <input matInput (keyup)="applyFilter($event)">
         </mat-form-field>
-
       </div>
 
       <div class="table-container">
@@ -33,6 +28,7 @@
             <th mat-header-cell *matHeaderCellDef> Usuário (Autor) </th>
             <td mat-cell *matCellDef="let item"> 
               <strong>{{item.author_name}}</strong>
+            </td>
           </ng-container>
 
           <ng-container matColumnDef="formato">
@@ -59,8 +55,6 @@
                      showFirstLastButtons
                      aria-label="Selecione a página de resultados">
       </mat-paginator>
-
     </mat-card-content>
   </mat-card>
-
 </div>

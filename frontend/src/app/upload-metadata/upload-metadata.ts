@@ -72,9 +72,7 @@ export class UploadMetadata implements OnInit {
     this.loadHistory();
   }
 
-  // =========================
-  // SnackBar para erros
-  // =========================
+
   private showError(message: string) {
     this.snackBar.open(message, 'Fechar', {
       duration: 5000,
@@ -84,9 +82,6 @@ export class UploadMetadata implements OnInit {
     });
   }
 
-  // =========================
-  // Seleção de arquivo
-  // =========================
   onFileSelected(event: any): void {
     const file = event.target.files[0];
     if (!file) return;
@@ -127,9 +122,7 @@ export class UploadMetadata implements OnInit {
     }
   }
 
-  // =========================
-  // Upload do arquivo
-  // =========================
+
   uploadFile(): void {
     if (!this.selectedFile) {
       this.showError('Selecione um arquivo antes de enviar.');
@@ -184,9 +177,6 @@ export class UploadMetadata implements OnInit {
     });
   }
 
-  // =========================
-  // Histórico
-  // =========================
   private saveToHistory(fileData: any): void {
     const token = localStorage.getItem('access_token');
     if (!token) return;

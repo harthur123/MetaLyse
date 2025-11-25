@@ -7,14 +7,13 @@
     <mat-card-content>
       <form class="auth-form" (ngSubmit)="onLogin()" #f="ngForm">
 
-        <!-- E-mail -->
+
         <mat-form-field appearance="outline">
           <mat-label>Usuário ou E-mail</mat-label>
           <input matInput type="text" [(ngModel)]="identifier" name="identifier" required>
         </mat-form-field>
 
 
-        <!-- Senha -->
         <mat-form-field appearance="outline">
           <mat-label>Senha</mat-label>
           <input matInput [type]="hidePassword ? 'password' : 'text'" [(ngModel)]="password" name="password"
@@ -26,18 +25,11 @@
           </button>
         </mat-form-field>
 
-        <!-- Erros -->
         <div *ngIf="errorMsg" class="error-message animate-error">
           {{ errorMsg }}
         </div>
 
 
-        <!-- Lembrar -->
-        <mat-checkbox [(ngModel)]="remember" name="remember">
-          Lembrar de mim
-        </mat-checkbox>
-
-        <!-- Botão Entrar -->
         <div class="actions">
           <button mat-raised-button color="primary" type="submit" [disabled]="loading">
             <span *ngIf="!loading">Entrar</span>
@@ -45,12 +37,12 @@
           </button>
         </div>
 
-        <!-- Esqueceu a senha -->
+
         <div class="forgot-password">
           <a [routerLink]="['/reset-password-request']">Esqueceu sua senha?</a>
         </div>
 
-        <!-- Criar Conta -->
+ 
         <div class="register-link">
           <a routerLink="/cadastro">Criar conta</a>
         </div>

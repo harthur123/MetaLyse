@@ -33,7 +33,7 @@ export class SolicitarRedefinicao {
   errorMsg = '';
 
   solicitarRedefinicao() {
-    if (this.loading) return; // evita duplo envio
+    if (this.loading) return; 
 
     this.errorMsg = '';
     this.successMsg = '';

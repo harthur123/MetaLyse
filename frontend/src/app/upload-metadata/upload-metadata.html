@@ -23,8 +23,7 @@
       (click)="fileInput.click()"
       role="button"
       tabindex="0"
-      aria-label="Área de upload de arquivo"
-    >
+      aria-label="Área de upload de arquivo">
       <div class="icon-wrapper">
         <mat-icon style="color:white">cloud_upload</mat-icon>
       </div>
@@ -41,7 +40,6 @@
       </button>
     </div>
 
-    <!-- Nome do arquivo + progresso -->
     <div class="upload-info" *ngIf="selectedFile">
       <div class="file-name">{{ selectedFile.name }}</div>
 
@@ -54,7 +52,7 @@
       <div *ngIf="uploading" class="progress-text">{{ uploadProgress }}%</div>
     </div>
 
-    <!-- Botão enviar -->
+
     <button
       type="button"
       class="submit-button"
@@ -65,11 +63,11 @@
     </button>
   </div>
 
-  <!-- Metadados -->
+
   <div class="metadata-container" *ngIf="metadata || extractedMetadata">
     <h3>Metadados Extraídos</h3>
 
-    <!-- PDF -->
+
     <div *ngIf="fileType === 'pdf'" class="metadata-box">
       <h4>Informações do Arquivo</h4>
       <p><strong>Nome:</strong> {{ metadata?.nome || metadata?.fileName || selectedFile?.name }}</p>
@@ -83,7 +81,6 @@
       <p><strong>Número de páginas:</strong> {{ extractedMetadata?.page_count || extractedMetadata?.pages || '-' }}</p>
     </div>
 
-    <!-- JPEG -->
     <div *ngIf="fileType === 'jpeg'" class="metadata-box">
       <h4>Informações do Arquivo</h4>
       <p><strong>Nome:</strong> {{ metadata?.nome || metadata?.fileName || selectedFile?.name }}</p>

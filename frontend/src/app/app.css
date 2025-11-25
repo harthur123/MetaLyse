@@ -1,50 +1,49 @@
-/* ARQUIVO: src/app/app.css */
+
 
 .app-toolbar {
-    background-color: #0c1a19; /* Cor de fundo escura */
-    color: white; /* Cor do texto e ícones */
-    padding: 0 16px; /* Espaçamento interno */
-    display: flex; /* Para controlar o alinhamento dos itens */
-    justify-content: space-between; /* Espaço entre título e menu */
+    background-color: #0c1a19; 
+    color: white; 
+    padding: 0 16px; 
+    justify-content: space-between; 
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra sutil */
-    height: 64px; /* Altura padrão da toolbar */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    height: 64px;
 }
 
 .toolbar-title {
     font-size: 24px;
-    font-weight: 500; /* Medium weight */
+    font-weight: 500;
 }
 
 .toolbar-spacer {
-    flex: 1 1 auto; /* Ocupa o espaço disponível, empurrando os itens */
+    flex: 1 1 auto;
 }
 
 .user-profile-button mat-icon {
-    font-size: 30px; /* Tamanho maior para o ícone de perfil */
+    font-size: 30px; 
     width: 30px;
     height: 30px;
 }
 
-/* Estilos para as abas de navegação */
+
 .navigation-tabs {
-    background-color: #f8f9fa; /* Um fundo mais claro para as abas */
-    border-bottom: 1px solid #dee2e6; /* Linha divisória */
-    justify-content: center; /* Centraliza as abas */
+    background-color: #f8f9fa; 
+    border-bottom: 1px solid #dee2e6; 
+    justify-content: center; 
 }
 
 .navigation-tabs .mat-tab-link {
-    color: #343a40; /* Cor do texto das abas */
+    color: #343a40; 
     font-weight: 500;
-    padding: 14px 24px; /* Aumenta o padding das abas */
+    padding: 14px 24px; 
     transition: background-color 0.3s ease;
 }
 
 .navigation-tabs .mat-tab-link:hover {
-    background-color: #e2e6ea; /* Fundo ao passar o mouse */
+    background-color: #e2e6ea; 
 }
 
 .navigation-tabs .mat-tab-link.mat-tab-link-active {
-    color: #007bff; /* Cor quando a aba está ativa (azul) */
-    border-bottom: 3px solid #007bff; /* Linha azul embaixo da aba ativa */
+    color: #007bff; 
+    border-bottom: 3px solid #007bff;
 }
