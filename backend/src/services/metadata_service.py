@@ -8,8 +8,7 @@ import exiftool
 from werkzeug.utils import secure_filename
 
 from src.extensions import db
-# 🚨 CORREÇÃO DE IMPORTAÇÃO: Usando History (se este for o nome do seu modelo de histórico)
-from src.models.history import History 
+from src.models.metadata import Metadata
 
 
 class MetadataService:
@@ -38,8 +37,7 @@ class MetadataService:
             file_hash = self._generate_hash(filepath)
 
             # Checar se arquivo já foi analisado
-            # 🚨 CORREÇÃO: Consulta usando o modelo History
-            existing = History.query.filter_by(filehash=file_hash).first() 
+            existing = Metadata.query.filter_by(filehash=file_hash).first()
             if existing:
                 raise ValueError("Arquivo já foi analisado anteriormente.")
 
@@ -47,25 +45,23 @@ class MetadataService:
             metadata_extracted = self._extract_metadata(filepath)
 
             # Salvar no banco
-            # 🚨 CORREÇÃO: Instanciação usando o modelo History
-            history_record = History(
+            metadata = Metadata(
                 filename=filename,
                 filesize=os.path.getsize(filepath),
-                # Você pode precisar ajustar 'filetype' se o content_type não for o que espera
-                filetype=file.content_type.split('/')[-1] if file.content_type else filename.rsplit('.', 1)[-1],
-                created_at=datetime.utcnow(), # Assumindo 'created_at' como coluna de data no History
+                filetype=file.content_type,
+                upload_date=datetime.utcnow(),
                 filehash=file_hash,
                 user_id=int(user_id),
                 extracted_data=metadata_extracted
             )
 
-            db.session.add(history_record)
+            db.session.add(metadata)
             db.session.commit()
 
-            return history_record, metadata_extracted
+            return metadata, metadata_extracted
 
         finally:
-            # Deletar arquivo temporário (CORRETO)
+            # Deletar arquivo temporário
             if filepath and os.path.exists(filepath):
                 try:
                     os.remove(filepath)
@@ -74,7 +70,7 @@ class MetadataService:
                     current_app.logger.error(f"Falha ao deletar arquivo temporário: {e}")
 
     # ---------------------------
-    # MÉTODOS AUXILIARES (CORRETOS)
+    # MÉTODOS AUXILIARES
     # ---------------------------
     def _allowed_file(self, filename):
         return '.' in filename and filename.rsplit('.', 1)[1].lower() in self.ALLOWED_EXTENSIONS
@@ -109,7 +105,7 @@ class MetadataService:
         return {'info': 'Tipo suportado, mas sem extração detalhada.'}
 
     # ---------------------------
-    # EXTRAÇÃO DE METADADOS (CORRETOS)
+    # EXTRAÇÃO DE METADADOS
     # ---------------------------
     def _extract_pdf_metadata(self, file_path):
         metadata = {}
