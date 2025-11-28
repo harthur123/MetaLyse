@@ -13,11 +13,12 @@ cd backend
 
 Isso isola as dependências do projeto.
 
-    No Windows (PowerShell):
-    PowerShell
+No Windows (PowerShell):
+ PowerShell
 
-python -m venv venv
-.\venv\Scripts\Activate.ps1
+    python -m venv venv
+    
+    .\venv\Scripts\Activate.ps1
 
 No Linux/Mac:
 Bash
@@ -25,28 +26,31 @@ Bash
     python3 -m venv venv
     source venv/bin/activate
 
-3. Instale as Dependências
+3. Instale as Dependências (Esteja com o ambiente virtual ativo)
 
 Bash
 
 pip install -r requirements.txt
 
-⚙️ Configuração de Ambiente (.env)
+
+
+⚙️  CONFIGURAÇÕES DE AMBIENTE (.env)
 
 Você precisa criar um arquivo chamado .env na raiz da pasta backend. Copie e cole o conteúdo abaixo dentro dele:
-Ini, TOML
 
-# Configurações de Segurança
-SECRET_KEY='uma-chave-super-secreta-e-aleatoria'
-SQLALCHEMY_DATABASE_URI='sqlite:///../instance/app.db'
 
-# Configurações de E-mail (Necessário para Reset de Senha)
-MAIL_SERVER='smtp.gmail.com'
-MAIL_PORT='587'
-MAIL_USE_TLS='True'
-MAIL_USERNAME='metalyser44@gmail.com'
-# (Se for testar o envio real, use uma Senha de App do Google aqui)
-MAIL_PASSWORD='tfdg vwwu dglm lkaa'
+        # Configurações de Segurança
+    
+        SECRET_KEY='uma-chave-super-secreta-e-aleatoria'
+        SQLALCHEMY_DATABASE_URI='sqlite:///../instance/app.db'
+        
+        # Configurações de E-mail (Necessário para Reset de Senha)
+        MAIL_SERVER='smtp.gmail.com'
+        MAIL_PORT='587'
+        MAIL_USE_TLS='True'
+        MAIL_USERNAME='metalyser44@gmail.com'
+        # (Se for testar o envio real, use uma Senha de App do Google aqui)
+        MAIL_PASSWORD='tfdg vwwu dglm lkaa'
 
 # --- 👑 CREDENCIAIS DO ADMINISTRADOR (SEED) ---
 # Estas credenciais serão usadas para criar o Admin via comando
@@ -68,11 +72,11 @@ Nós criamos um comando personalizado para "plantar" o admin configurado no .env
 No terminal (com o venv ativo), execute:
 PowerShell
 
-# 1. Define o app (Apenas Windows PowerShell)
-$env:FLASK_APP = "run.py"
-
-# 2. Roda o comando de criação
-flask seed-admin
+    # 1. Define o app (Apenas Windows PowerShell)
+    $env:FLASK_APP = "run.py"
+    
+    # 2. Roda o comando de criação
+    flask seed-admin
 
 ✅ Resultado Esperado: Administrador 'admin@metalyse.com' criado com sucesso.
 
@@ -81,7 +85,7 @@ flask seed-admin
 Agora que tudo está configurado:
 PowerShell
 
-python run.py
+    python run.py
 
 O servidor iniciará em: http://127.0.0.1:5000/
 
@@ -90,11 +94,11 @@ O servidor iniciará em: http://127.0.0.1:5000/
 Você pode testar usando o Postman ou Insomnia.
 
 1. 🔐 Autenticação
-
-Ação	Método	URL	Body (JSON)
-Login (Admin)	POST	/api/auth/login	{ "email": "admin@metalyse.com", "password": "Admin123!@" }
-Registro (Comum)	POST	/api/auth/register	{ "username": "teste", "email": "teste@email.com", "password": "Senha123!" }
-Logout	POST	/api/auth/logout	Authorization: Bearer <TOKEN>
+    
+        Ação	                   Método	           URL	                                    Body (JSON)
+        Login (Admin)	            POST	     /api/auth/login	      { "email": "admin@metalyse.com", "password": "Admin123!@" }
+        Registro (Comum)	        POST	     /api/auth/register	      { "username": "teste", "email": "teste@email.com", "password": "Senha123!" }
+        Logout	                    POST	     /api/auth/logout	      Authorization: Bearer <TOKEN>
 
     NOTA: Ao fazer Login, copie o access_token retornado. Você precisará dele para as rotas abaixo.
 
